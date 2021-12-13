@@ -10,13 +10,14 @@ import Kingfisher
 
 
 struct ContentView: View {
-    @State var photoItems: [Result] = []  // MediaResponse에서 정의
-    @State var searchedItems: [Result] = []  // 분리된 search tab에서 사용할 사진 리스트
-    @State var pageNum: Int = 0  // json 받아올 페이지 넘버
-    @State var showModal = false  // Bullseye에서 PointsView와 동일한 로직입니다
-    @State var selectedPhoto: Result = Result(id: "", urls: URLS(regular: ""), user: Username(name: "")) // 선택된 사진
-    @State var selectedPhotoNum: Int = 0  // 선택된 사진의 index
-    @State var searchInput = ""  // 검색 인풋
+    @State private var photoItems: [Result] = []  // MediaResponse에서 정의
+    @State private var searchedItems: [Result] = []  // 분리된 search tab에서 사용할 사진 리스트
+    @State private var pageNum: Int = 0  // json 받아올 페이지 넘버
+    @State private var searchPageNum: Int = 0
+    @State private var showModal = false  // Bullseye에서 PointsView와 동일한 로직입니다
+    @State private var selectedPhoto: Result = Result(id: "", urls: URLS(regular: ""), user: Username(name: "")) // 선택된 사진
+    @State private var selectedPhotoNum: Int = 0  // 선택된 사진의 index
+    @State private var searchInput = ""  // 검색 인풋
     
     init() {
         // 스크롤 안보이게 함
@@ -32,10 +33,8 @@ struct ContentView: View {
                     .font(.headline)
                     .bold()
                 List(0..<photoItems.count, id: \.self) {
-                    // 사진들을 리스트처럼 나타냄
                     item in
                         ZStack(alignment: .bottomLeading){
-                            // 이미지 url을 사진으로 변환하는 방식이 복잡해서 Kingfisher 오픈소스를 사용했고, KFImage를 이용했습니다.. 이부분도 더 나은 방법이 있다면 바꿔주세요
                             KFImage(URL(string: photoItems[item].urls.regular)!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -45,7 +44,7 @@ struct ContentView: View {
                                     self.selectedPhotoNum = item
                                     self.showModal = true
                                 }
-                                .onAppear{if item == self.pageNum * 10 - 4 {
+                                .onAppear{if item == self.pageNum * 10 - 6 {
                                     // 기존의 문제를 해결하기 위해 제일 마지막에서 5번째 사진이 화면에 보일 때 다음 10장의 사진을 가져오도록 했습니다. 사진 로딩 시간을 고려해서 마지막 사진이 나타나기 전에 새로 사진을 가져오도록 했어요
                                     fetchPhoto()
                                   }
@@ -91,15 +90,15 @@ struct ContentView: View {
                     Image(systemName: "photo.fill")
                         .foregroundColor(Color(UIColor.systemGray5))
                 }
+            // 검색 탭
             VStack {
-                // 검색 탭
                 // 검색 바
                 HStack {
                     TextField("Search", text: $searchInput)
                     Spacer()
                     Button(action: {
                         searchedItems = []
-                        pageNum = 0
+                        searchPageNum = 0
                         fetchSearchedPhoto()
                     }) {
                         Image(systemName: "magnifyingglass")
@@ -118,7 +117,7 @@ struct ContentView: View {
                                     self.selectedPhotoNum = item
                                     self.showModal = true
                                 }
-                                .onAppear{if item == self.pageNum * 10 - 3 {
+                                .onAppear{if item == self.searchPageNum * 10 - 6 {
                                     // 기존의 문제를 해결하기 위해 제일 마지막에서 4번째 사진이 화면에 보일 때 다음 10장의 사진을 가져오도록 했습니다. 사진 로딩 시간을 고려해서 마지막 사진이 나타나기 전에 새로 사진을 가져오도록 했어요
                                     fetchSearchedPhoto()
                                   }
@@ -186,7 +185,6 @@ struct ContentView: View {
                 let jsonResult = try JSONDecoder().decode([Result].self, from: data)
                 DispatchQueue.main.async {
                     self.photoItems += jsonResult
-                    
                 }
             } catch {
                 print(error)
@@ -196,9 +194,9 @@ struct ContentView: View {
     }
     // 사진을 검색하면 실행되는 함수
     func fetchSearchedPhoto() {
-        self.pageNum += 1
-        print(pageNum)
-        guard let url =  URL(string: "https://api.unsplash.com/search/photos?page=\(pageNum)&query=\(self.searchInput)&client_id=bMlyFGmZbPG596sYN9M7zpigQ7SD3B0stTg_HTvRjz8") else {
+        self.searchPageNum += 1
+        print(searchPageNum)
+        guard let url =  URL(string: "https://api.unsplash.com/search/photos?page=\(searchPageNum)&query=\(self.searchInput)&client_id=bMlyFGmZbPG596sYN9M7zpigQ7SD3B0stTg_HTvRjz8") else {
             return
         }
         
@@ -210,7 +208,6 @@ struct ContentView: View {
                 let jsonResult = try JSONDecoder().decode(MediaResponse.self, from: data)
                 DispatchQueue.main.async {
                     self.searchedItems += jsonResult.results
-                    
                 }
             } catch {
                 print(error)

@@ -1,13 +1,13 @@
 //
-//  Tests_macOS.swift
-//  Tests macOS
+//  UnsplashUITests.swift
+//  UnsplashUITests
 //
-//  Created by SWY on 2021/11/19.
+//  Created by SWY on 2021/12/13.
 //
 
 import XCTest
 
-class Tests_macOS: XCTestCase {
+class UnsplashUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

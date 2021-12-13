@@ -1,13 +1,13 @@
 //
-//  Tests_iOSLaunchTests.swift
-//  Tests iOS
+//  UnsplashUITestsLaunchTests.swift
+//  UnsplashUITests
 //
-//  Created by SWY on 2021/11/19.
+//  Created by SWY on 2021/12/13.
 //
 
 import XCTest
 
-class Tests_iOSLaunchTests: XCTestCase {
+class UnsplashUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

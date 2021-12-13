@@ -1,14 +1,14 @@
 //
-//  iOS_Programming_group7App.swift
-//  Shared
+//  UnsplashApp.swift
+//  Unsplash
 //
-//  Created by SWY on 2021/11/19.
+//  Created by SWY on 2021/12/13.
 //
 
 import SwiftUI
 
 @main
-struct iOS_Programming_group7App: App {
+struct UnsplashApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

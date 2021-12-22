@@ -37,11 +37,11 @@
 
   <img src="./ReadMe_img/detail_light.png" style="width: 300px; height: auto;" /><img src="./ReadMe_img/detail_dark.png" style="width: 300px; height: auto;" />
 
-- 검색 화면
+- 검색 화면 (검색 결과가 있는 경우)
 
   <img src="./ReadMe_img/search_light.png" style="width: 300px; height: auto;" /><img src="./ReadMe_img/search_dark.png" style="width: 300px; height: auto;" />
 
-- 검색된 사진 없음
+- 검색 화면 (검색 결과가 없는 경우)
 
   <img src="./ReadMe_img/noPhotos_light.png" style="width: 300px; height: auto;" /><img src="./ReadMe_img/noPhotos_dark.png" style="width: 300px; height: auto;" />
 
@@ -62,11 +62,11 @@
 
 - `ContentView`
   - `TabView`를 이용하여 메인 탭과 검색 탭을 구성하였다. `tabItem`의 위치를 조정하는 것이 불가능하여 `Button`을 사용하였다.
-  - 메인 탭: 앱의 이름, `PhotoListView()`(메인 탭의 사진 목록)
-  - 검색 탭: 검색 바, `SearchListView()`(검색 탭의 사진 목록)
+  - 메인 탭: 앱의 이름, 사진 목록 (`PhotoListView()`)
+  - 검색 탭: 검색 바, 사진 목록 (`SearchListView()`)
 - `ModalView`
   - 사진을 터치했을 때 나오는 상세화면이다.
-  - `ModalTopView`: 상세화면을 닫는 기능이 있고, 이미지 업로더의 이름이 가운데에 표시된다. 공유 버튼의 기능은 구현되지 않았다.
+  - `ModalTopView`: 상단 좌측에 상세화면을 닫는 기능이 있고, 가운데에 이미지 업로더의 이름이 표시된다. 우측 공유 버튼의 기능은 구현되지 않았다.
   - `Image`에는 `.aspectRatio(contentMode: .fit)` 속성을 적용하였다.
   - `ModalFooterView`: 실제로 구현된 기능은 없다.
 - `ListView`

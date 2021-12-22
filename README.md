@@ -41,7 +41,8 @@
 
   <img src="./ReadMe_img/search_light.png" style="width: 300px; height: auto;" /><img src="./ReadMe_img/search_dark.png" style="width: 300px; height: auto;" />
 
-- 검색된 사진이 없음
+- 검색된 사진 없음
+
   <img src="./ReadMe_img/noPhotos_light.png" style="width: 300px; height: auto;" /><img src="./ReadMe_img/noPhotos_dark.png" style="width: 300px; height: auto;" />
 
 

@@ -85,20 +85,20 @@ struct ContentView: View {
                     Button(action: { self.selected = 0 } ) {
                         Image(systemName: "photo.fill")
                             .resizable()
-                            .frame(width: 28.0, height: 23.0)
+                            .frame(width: 26.0, height: 22.0)
                             .foregroundColor(self.selected != 0 ? Color(UIColor.systemGray5) : Color("dark color"))
                             .padding(.bottom, 12)
                     }
-                    .padding(.leading, 70)
+                    .padding(.leading, 90)
                     Spacer()
                     Button(action: { self.selected = 1 } ) {
                         Image(systemName: "magnifyingglass")
                             .resizable()
-                            .frame(width: 23.0, height: 23.0)
+                            .frame(width: 22.0, height: 22.0)
                             .foregroundColor(self.selected != 1 ? Color(UIColor.systemGray5) : Color("dark color"))
                             .padding(.bottom, 12)
                     }
-                    .padding(.trailing, 70)
+                    .padding(.trailing, 90)
                 }
                 .onAppear(perform: program.fetchPhoto)
         }

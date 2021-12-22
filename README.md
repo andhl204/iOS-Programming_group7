@@ -31,18 +31,18 @@
 
 - 메인화면
 
-  |<img src="./ReadMe_img/main_light.png" style="zoom:50%;" />|<img src="./ReadMe_img/main_dark.png" style="zoom:50%;" />|
+  <img src="./ReadMe_img/main_light.png" style="zoom:50%;" /><img src="./ReadMe_img/main_dark.png" style="zoom:50%;" />
 
 - 상세 화면
 
-  |<img src="./ReadMe_img/detail_light.png" style="zoom:50%;" />|<img src="./ReadMe_img/detail_dark.png" style="zoom:50%;" />|
+  <img src="./ReadMe_img/detail_light.png" style="zoom:50%;" /><img src="./ReadMe_img/detail_dark.png" style="zoom:50%;" />
 
 - 검색 화면
 
-  |<img src="./ReadMe_img/search_light.png" style="zoom:50%;" />|<img src="./ReadMe_img/search_dark.png" style="zoom:50%;" />|
+  <img src="./ReadMe_img/search_light.png" style="zoom:50%;" /><img src="./ReadMe_img/search_dark.png" style="zoom:50%;" />
 
 - 해당 검색어의 사진이 존재하지 않을 시
-  |<img src="./ReadMe_img/noPhotos_light.png" style="zoom:50%;" />|<img src="./ReadMe_img/noPhotos_dark.png" style="zoom:50%;" />|
+  <img src="./ReadMe_img/noPhotos_light.png" style="zoom:50%;" /><img src="./ReadMe_img/noPhotos_dark.png" style="zoom:50%;" />
 
 
 
